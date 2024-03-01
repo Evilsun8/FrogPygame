@@ -57,7 +57,20 @@ class Game:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.escape_key()
                 self.frog.keyups.append(event.key)
+
+    def escape_key(self):
+        current_time = pygame.time.get_ticks()
+        escape_delay = 1000
+
+        if hasattr(self, "last_escape_time"):
+            time_elapsed = current_time - self.last_escape_time
+            if time_elapsed < escape_delay:
+                pygame.quit()
+                sys.exit()
+        self.last_escape_time  = current_time
 
     def update_sprites(self):
         for group in self.all_groups:

@@ -41,6 +41,9 @@ class Frog(Object):
         if x <= -48 or x > 48*13 or y > 48*15:
             self.killFrog()
             return
+        
+        if y <= 144:
+            return #Hatte Probleme die Geschwindigkeit zu erhöhen...
 
         self.pos = (x,y)
 

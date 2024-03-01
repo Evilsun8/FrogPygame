@@ -1,4 +1,5 @@
 import pygame
+import sys
 from object import *
 
 class Frog(Object):
@@ -32,6 +33,9 @@ class Frog(Object):
             self.image_directory = "Tastatur/images/Frogger_Right.png"
             x += 48
         
+        if pygame.K_SPACE in self.keyups:
+            self.image_directory = "Tastatur/images/Frogger_Up.png"
+            y -= 96
 
         x += self.x_speed
         if x <= -48 or x > 48*13 or y > 48*15:

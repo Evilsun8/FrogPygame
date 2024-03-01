@@ -43,7 +43,7 @@ class Frog(Object):
             return
         
         if y <= 144:
-            return #Hatte Probleme die Geschwindigkeit zu erhöhen...
+            self.killFrog() #Hatte Probleme die Geschwindigkeit zu erhöhen...
 
         self.pos = (x,y)
 

@@ -11,6 +11,13 @@ class Game:
 
         self.screen_color = screen_color
         self.DISPLAY = pygame.display.get_surface()
+
+        self.volume: float = 0.5                                    
+        self.sounds()
+
+        # fonts
+        self.fontsize = 48
+        self.fontcolor = [255, 255, 255]
          
         #sprite group
         self.object_group = pygame.sprite.Group()
@@ -23,6 +30,7 @@ class Game:
 
         self.river_speeds = {}
         self.assetSetup()
+
 
     def assetSetup(self):
         Object((0,0), (672, 768), "Tastatur/images/Background.png", self.object_group)
@@ -50,6 +58,15 @@ class Game:
             Lane((0, y_pos), self.car_group, speeds.pop(), "street")
 
         self.frog = Frog((336, 672), (48, 48), "Tastatur/images/Frogger_Up.png", self.frog_group, [self.car_group, self.river_group], self.river_speeds)
+        self.sounds()
+
+    def sounds(self) -> None:
+        pygame.mixer.music.load("Tastatur/sounds/Michael Myers Theme Song.mp3")
+        pygame.mixer.music.set_volume(self.volume)
+        pygame.mixer.music.play(-1, 0.0)
+        #self.bubble: pygame.mixer.Sound = pygame.mixer.Sound("")  
+        #self.clash: pygame.mixer.Sound = pygame.mixer.Sound("")
+
     def events(self):
         self.frog.keyups = []
         for event in pygame.event.get():
@@ -60,6 +77,7 @@ class Game:
                 if event.key == pygame.K_ESCAPE:
                     self.escape_key()
                 self.frog.keyups.append(event.key)
+
 
     def escape_key(self):
         current_time = pygame.time.get_ticks()

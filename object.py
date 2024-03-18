@@ -7,6 +7,7 @@ class Object(pygame.sprite.Sprite):
         self.size = size
         self.image_directory = image_directory
 
+
     def setImage(self):
         self.image = pygame.image.load(self.image_directory)
         self.image = pygame.transform.scale(self.image, self.size)
@@ -17,3 +18,10 @@ class Object(pygame.sprite.Sprite):
 
     def update(self):
         self.setImage()
+    
+class ObjectScream(pygame.sprite.Sprite):
+    def __init__(self, pos, size, image_directory):
+
+        self.pos = pos
+        self.size = size
+        self.image_directory = image_directory

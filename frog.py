@@ -10,6 +10,8 @@ class Frog(Object):
 
         self.collision_groups = collision_groups
 
+        self.screamer = ObjectScream((0,0), (672,768), "Tastatur/images/Frog_vivisection.jpg")
+
         self.river_speeds = river_speeds
         self.x_speed = 0
 
@@ -71,6 +73,9 @@ class Frog(Object):
         self.pos = (336, 672)
         self.image_directory = "Tastatur/images/Frogger_Up.png"
         self.setImage()
+        self.sound = pygame.mixer.Sound("Tastatur/sounds/Scary Screamer - Sound Effect (Free).mp3")
+        pygame.mixer.Sound.play(self.sound)
+        #self.screamer.draw(self.DISPLAY)
 
     def update(self):
         self.moveFrog()
